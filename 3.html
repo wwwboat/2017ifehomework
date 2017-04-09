@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,div,ul,li,p{
+				margin:0px;
+				padding: 0px;
+			}
+			.clearfix:after{
+				clear:both;
+				content: ".";
+				display: block;
+				height:0;
+				width:0;
+				visibility: hidden;
+			}
+			#wrap{
+				padding:20px;
+				background: #eee;
+			}
+			.left,.main,.right{
+				background: #fff;
+			}
+			.left{
+				width:200px;
+				border:1px solid #999;
+				padding:20px;
+				position: relative;
+				float:left;
+			}
+			.logo{
+				width:80px;
+				height:80px;
+				border:1px solid #999;
+				box-sizing: border-box;
+				padding:20px;
+				float: left;
+				margin-right: 20px;
+			}
+			.main{
+				border: 1px solid #999;
+				margin-left:20px;
+				float:left;
+			}
+			.right{
+				width:120px;
+				border:1px solid #999;
+				float:right;
+			}
+			.right ul{
+				
+			    
+			}
+			.right li{
+				list-style: none;
+				padding: 20px;;
+			}
+			.right .logo{
+				float:none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap" class="clearfix">
+			<div class="left clearfix">
+				<div class="logo"></div>
+				<p>logologo</p>
+			</div>
+			<div class="main">
+				<p>jalgheoighsnvklndfsahrawehevkjsd</p>
+			</div>
+			<div class="right clearfix">
+				<ul>
+					<li>
+						<div class="logo"></div>
+					</li>
+					<li>
+						<div class="logo"></div>
+					</li>
+					<li>
+						<div class="logo"></div>
+					</li>
+					<li>
+						<div class="logo"></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
