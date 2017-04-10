@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				border:1px solid rgb(0,0,0);
+				border-radius: 5px;
+				box-shadow: 0 0 3px;
+			}
+			ul li{
+				list-style: none;
+				padding: 10px;
+				text-decoration: underline;
+				font-family: "微软雅黑";
+			}
+			button{
+				width:50px;
+				height:30px;
+				border-radius: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="source">
+			<li>北京空气质量：<b>90</b></li>
+			<li>上海空气质量：<b>70</b></li>
+			<li>天津空气质量：<b>80</b></li>
+			<li>广州空气质量：<b>58</b></li>
+			<li>深圳空气质量：<b>40</b></li>
+			<li>福州空气质量：<b>32</b></li>
+			<li>成都空气质量：<b>90</b></li>
+		</ul>
+		<button id="sort-btn">排序</button>
+		
+		<script>
+			function sortCity(){
+				var oList=document.getElementById("source");
+				//var aLi=oList.getElementsByTagName("li");
+				var aLiB=oList.children; 
+				
+				var sortArr=[];
+				for(var i=0;i<aLiB.length;i++){
+					var li=aLiB[i];
+					//alert(li.innerHTML);
+					var city=li.innerHTML.substring(0,2);
+					//alert(city);
+					var b=li.children[0].innerHTML;
+					//alert(b);
+					//sortArr.push(b);
+					sortArr[i]=[city,b];
+				}
+				return sortArr;
+			}
+			function sortNum(data){
+				return data.sort(function(x,y){
+					return y[1]-x[1];
+				})
+			}
+			function sortList(data){
+				if(data[0][0].indexOf("第")===0){
+					return;
+				}
+				var sortN=["一","二","三","四","五","六","七"];
+				var List="";
+				var oUl=document.getElementById("source");
+				for(var i=0;i<data.length;i++){
+					List+="<li>第"+sortN[i]+"名："+data[i][0]+",空气质量："+"<b>"+data[i][1]+"</b></li>";
+				}
+				oUl.innerHTML=List;
+			}
+			function showSort(){
+				var sortC=sortCity();
+				sortC=sortNum(sortC);
+				sortList(sortC);
+				
+			}
+			function init() {
+            // 在这下面给sort-btn绑定一个点击事件，点击时触发btnHandle函数
+            document.addEventListener('click', function () {
+                showSort();
+            })
+        }
+			init();
+		</script>
+	</body>
+</html>
