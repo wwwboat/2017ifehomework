@@ -1,0 +1,116 @@
+<!DOCTYPE >
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			body,div,form,input,p{padding:0px;margin:0px;}
+			.form{
+				
+			}
+			.form div{
+				margin: 20px;
+			}
+			.form div label{
+				font-family: "微软雅黑";
+			}
+			
+			.form div input{
+				height:20px;
+				padding:0 5px;
+				margin-left:10px ;
+				border-radius: 6px;
+				box-shadow: none;
+				border-style:none;
+				border:1px solid #808080;
+			}
+			.form div .input{
+				position: relative;
+			}
+			.form div .input span{
+				position: absolute;
+				top:20px;
+				left:10;
+			}
+			.form div button{
+				width:60px;
+				height:20px;
+			}
+			.tab{
+				color:gray;
+				font-size: 12px;
+				font-family: arial;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="form">
+			<form>
+				<div>
+					<label for="name">名称</label>
+					<span class="input">
+						<input id="name" type="text">
+						<span class="tab">必填，长度为4～16个字符</span>
+					</span>
+					<button >验证</button>
+				</div>
+			</form>
+		</div>
+		<script>
+			window.onload=function(){
+				/*
+				 获取所需的元素
+				 */
+				var oBtn=document.getElementsByTagName("button")[0];
+				var oTips=document.getElementsByClassName("tab")[0];
+				var aInput=document.getElementsByTagName("input")[0];
+				/*
+				 输入框的键盘抬起事件，和验证按钮的点击事件
+				 */
+				aInput.onkeyup=function(){
+					checkName(aInput,oTips);
+				}
+				oBtn.onclick=function (){
+					if(!checkName(aInput,oTips)){
+						return false;
+					}
+					
+				}
+			};
+			
+			/*
+			 * 验证输入内容函数
+			 */
+			function checkName(inPut,tips){
+				var inputVal=inPut.value;
+				//验证输入字符，为中文则一个长度为2
+				var Len=0;
+				for(var i=0;i<inputVal.length;i++){
+					if(inputVal.charCodeAt()>255){
+						Len+=2;
+					}else{
+						Len++;
+					}
+				}
+				if(Len==0){
+					tips.innerHTML="姓名不能为空";
+					tips.style.color="red";
+					inPut.style.borderColor="red";
+					return false;
+				}else if(Len<4||Len>16){
+					tips.innerHTML="长度为4～16个字符";
+					tips.style.color="red";
+					inPut.style.borderColor="red";	
+					return false;
+				}else{
+					tips.innerHTML="输入正确。";
+					tips.style.color="green";
+					inPut.style.borderColor="green";
+					return true;
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>
